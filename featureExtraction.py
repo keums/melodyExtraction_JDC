@@ -7,10 +7,9 @@ def spec_extraction(file_name,win_size):
 
     x_test = []
     # y, sr = librosa.load(file_name, sr=8000)
+    # madmom.Signal() is faster than librosa.load()
     y = Signal(file_name, sample_rate=8000, dtype=np.float32, num_channels=1)
-
     S = librosa.core.stft(y, n_fft=1024, hop_length=80*1, win_length=1024)
-
 
     x_spec = np.abs(S)
     x_spec  = librosa.core.power_to_db(x_spec,ref=np.max)
