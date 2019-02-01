@@ -7,7 +7,8 @@ Created on Fri Jan 19 00:04:22 2019
 """
 
 import os
-
+# os.environ['CUDA_DEVICE_ORDER']='PCI_BUS_ID'
+# os.environ['CUDA_VISIBLE_DEVICES']=''
 import numpy as np
 from keras.utils import multi_gpu_model
 import matplotlib.pyplot as plt
@@ -36,18 +37,10 @@ def main(file_name):
     X_test, X_spec = spec_extraction(file_name=file_name, win_size=options.input_size)
 
 
-    '''  Loading model '''
-    model = melody_ResNet_joint_add(options)
-    weight_name = './ResNet_joint_add_L(CE_G)_N(0).hdf5'
-
     '''  Prediction of melody '''
-    if options.use_multi_gpu == 1:
-        parallel_model = multi_gpu_model(model, gpus=2)
-        parallel_model.load_weights(weight_name)
-        y_predict = parallel_model.predict(X_test, batch_size=options.batch_size, verbose=1)
-    else:
-        model.load_weights(weight_name.replace('.hdf', '_singleGPU.hdf'))
-        y_predict = model.predict(X_test, batch_size=options.batch_size, verbose=1)
+    model = melody_ResNet_joint_add(options)
+    model.load_weights('./weights/ResNet_joint_add_L(CE_G).hdf5')
+    y_predict = model.predict(X_test, batch_size=options.batch_size, verbose=1)
 
     num_total = y_predict[0].shape[0] * y_predict[0].shape[1]
     # y_predict_v = np.reshape(y_predict[1], (num_total, 2))
