@@ -1,4 +1,4 @@
-# Melody extraction using Joint Detection and Classification network
+# Melody extraction using joint detection and classification network
 The source code of *"Joint Detection and Classification of Singing Voice Melody Using Convolutional Recurrent Neural Networks"*, Applied Sciences (2019) (accepted)
 
 
