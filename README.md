@@ -26,6 +26,7 @@ The experiments demonstrate how the auxiliary network and the joint melody loss 
   - Librosa 0.6.2 (for STFT)  
   - madmom 0.16.1 (for loading audio and resampling)
   - Numpy, SciPy
+  - click (for CLI)
 
 -  Hardware
   -  2 GPU : GeForce GTX 1080ti
