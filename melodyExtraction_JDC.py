@@ -57,7 +57,7 @@ def main(file_name):
 
     est_pitch = medfilt(est_pitch, 5)
 
-    PATH_est_pitch = './pitch_'+file_name.split('/')[-1]+'.txt'
+    PATH_est_pitch = './results/pitch_'+file_name.split('/')[-1]+'.txt'
     if not os.path.exists(os.path.dirname(PATH_est_pitch)):
         os.makedirs(os.path.dirname(PATH_est_pitch))
     f = open(PATH_est_pitch, 'w')
