@@ -7,6 +7,7 @@ Created on Fri Jan 19 00:04:22 2019
 """
 
 import os
+import sys
 # os.environ['CUDA_DEVICE_ORDER']='PCI_BUS_ID'
 # os.environ['CUDA_VISIBLE_DEVICES']=''
 import numpy as np
@@ -62,7 +63,7 @@ def main(file_name):
         os.makedirs(os.path.dirname(PATH_est_pitch))
     f = open(PATH_est_pitch, 'w')
     for j in range(len(est_pitch)):
-        est = "%f %f\n" % (0.01 * j, est_pitch[j])
+        est = "%.2f %.4f\n" % (0.01 * j, est_pitch[j])
         f.write(est)
     f.close()
 
@@ -80,6 +81,6 @@ def main(file_name):
 
 if __name__ == '__main__':
     options = Options()
-    file_name = '/Project/dataset/musdb18/test/Cristina Vane - So Easy.stem.mp4'
+    file_name = sys.argv[1]
     main(file_name = file_name)
 
