@@ -57,6 +57,15 @@ def main(file_name):
 
     est_pitch = medfilt(est_pitch, 5)
 
+    PATH_est_pitch = './pitch_'+file_name.split('/')[-1]+'.txt'
+    if not os.path.exists(os.path.dirname(PATH_est_pitch)):
+        os.makedirs(os.path.dirname(PATH_est_pitch))
+    f = open(PATH_est_pitch, 'w')
+    for j in range(len(est_pitch)):
+        est = "%f %f\n" % (0.01 * j, est_pitch[j])
+        f.write(est)
+    f.close()
+
     ''' Plot '''
     if options.figureON == True:
         start = 2000
@@ -72,5 +81,5 @@ def main(file_name):
 if __name__ == '__main__':
     options = Options()
     file_name = '/Project/dataset/musdb18/test/Cristina Vane - So Easy.stem.mp4'
-    main(file_name = file_name )
+    main(file_name = file_name)
 
