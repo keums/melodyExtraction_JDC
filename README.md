@@ -4,7 +4,7 @@ The source code of *"Joint Detection and Classification of Singing Voice Melody 
 
 ## Abstract
 
-We present a joint detection and classification (JDC) network that conducts the singing voice detection and the pitch estimation simultaneously. The JDC network is composed of the main network that predicts the pitch contours of the singing melody and anauxiliary network that facilitates the detection of the singing voice. 
+We present a joint detection and classification (JDC) network that conducts the singing voice detection and pitch estimation simultaneously. The JDC network is composed of the main network that predicts the pitch contours of the singing melody and an auxiliary network that facilitates the detection of the singing voice. 
 
 <img src="./img/diagram.png" width="70%">
 
@@ -12,14 +12,14 @@ The main network is built with a convolutional recurrent neural network with res
 The auxiliary network is trained to detect the singing voice using multi-level features shared from the main network. The two optimizations processed are tied with a joint melody loss function. 
 
 We evaluate the proposed model on multiple melody extraction and vocal detection datasets, including cross-dataset evaluation. 
-The experiments demonstrate how the auxiliary network and the joint melody loss function improve the melody extraction performance. Also, the results show that our method outperforms state-of-the-art algorithms on the datasets.
+The experiments demonstrate how the auxiliary network and the joint melody loss function improve melody extraction performance. Also, the results show that our method outperforms state-of-the-art algorithms on the datasets.
 
 
 ## Dependencies
 
-- OS : LINUX 
+- OS: LINUX 
 
-- Programming language : Python 3.6+
+- Programming language: Python 3.6+
 
 - Python Library 
   - Keras 2.2.2 (Deep Learning library)
@@ -50,3 +50,6 @@ $ python melodyExtraction_JDC.py './test_audio_file.mp4'
 0.16 187.0117
 0.17 188.3669
 ```
+
+
+
