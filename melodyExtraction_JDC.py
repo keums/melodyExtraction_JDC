@@ -23,8 +23,6 @@ class Options(object):
 options = Options()
 
 def main(filepath,output_dir,gpu_index):
-
-
     if gpu_index is not None:
         os.environ['CUDA_DEVICE_ORDER'] = 'PCI_BUS_ID'
         os.environ['CUDA_VISIBLE_DEVICES'] = str(gpu_index)
@@ -79,9 +77,9 @@ def main(filepath,output_dir,gpu_index):
 
 def parser():
     p = argparse.ArgumentParser()
-    p.add_argument('-fp', '--filepath',
+    p.add_argument('-p', '--filepath',
                    help='Path to input audio (default: %(default)s',
-                   type=str, default='train01.wav')
+                   type=str, default='test_audio_file.mp4')
     p.add_argument('-gpu', '--gpu_index',
                    help='Assign a gpu index for processing. It will run with cpu if None.  (default: %(default)s',
                    type=int, default=None)
