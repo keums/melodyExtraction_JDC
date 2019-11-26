@@ -32,7 +32,14 @@ The experiments demonstrate how the auxiliary network and the joint melody loss 
   
 ## Using melody_extraction_JDC from the command line
 ```bash
-$ python melodyExtraction_JDC.py './test_audio_file.mp4'
+$ python melodyExtraction_JDC.py -p ./test_audio_file.mp4 -gpu 0 -o ./output/
+
+optional arguments:
+  -p filepath            Path to input audio(.wav) (default: ./test_audio_file.mp4)
+  -t model_type           Model type: vocal or melody (default: vocal)
+  -gpu gpu_index          Assign a gpu index for processing.
+                          It will run with cpu if None. (default: 0)
+  -o output_dir           Path to output folder (default: ./output/)
 ```
 
 - The resulting 'pitch_(*file_name*).txt' contains 2 columns: 
