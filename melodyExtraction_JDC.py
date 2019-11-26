@@ -52,20 +52,12 @@ def main(filepath,output_dir,gpu_index):
     # index_predict = np.zeros(num_total)
 
     y_predict = np.reshape(y_predict[0], (num_total, y_predict[0].shape[2]))  # origin
+    
     for i in range(y_predict.shape[0]):
-        idxMaxPitch = np.argsort(y_predict[i, :])[-1]
-        if idxMaxPitch == 0:
-            idxMaxPitch = np.argsort(y_predict[i, :])[-4]
-        pitch_MIDI = pitch_range[np.int32(idxMaxPitch)]
+        index_predict = np.argmax(y_predict[i, :])
+        pitch_MIDI = pitch_range[np.int32(index_predict)]
         if pitch_MIDI >= 38 and pitch_MIDI <= 83:
             est_pitch[i] = 2 ** ((pitch_MIDI - 69) / 12.) * 440
-    
-    # for i in range(y_predict.shape[0]):
-    #     index_predict = np.argmax(y_predict[i, :])
-    #     pitch_MIDI = pitch_range[np.int32(index_predict)]
-    #     if pitch_MIDI >= 38 and pitch_MIDI <= 83:
-    #         est_pitch[i] = 2 ** ((pitch_MIDI - 69) / 12.) * 440
-
 
     est_pitch = medfilt(est_pitch, 5)
 
