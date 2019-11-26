@@ -36,21 +36,15 @@ def main(filepath,output_dir,gpu_index):
     '''  Features extraction'''
     X_test, X_spec = spec_extraction(file_name=filepath, win_size=options.input_size)
 
-
     '''  melody predict'''
     model = melody_ResNet_joint_add(options)
-    # model.load_weights('./weights/ResNet_joint_add_L(CE_G).hdf5')
     # model = melody_ResNet_joint_add2(options)
-    model.load_weights(
-        './weights/ResNet_joint_add_L(CE_G)_r16_t3_singleGPU.hdf5')
+    # model.load_weights('./weights/ResNet_joint_add_L(CE_G).hdf5')
+    model.load_weights('./weights/ResNet_joint_add_L(CE_G)_r16_t3_singleGPU.hdf5')
     y_predict = model.predict(X_test, batch_size=options.batch_size, verbose=1)
 
     num_total = y_predict[0].shape[0] * y_predict[0].shape[1]
-    # y_predict_v = np.reshape(y_predict[1], (num_total, 2))
-
     est_pitch = np.zeros(num_total)
-    # index_predict = np.zeros(num_total)
-
     y_predict = np.reshape(y_predict[0], (num_total, y_predict[0].shape[2]))  # origin
     
     for i in range(y_predict.shape[0]):
@@ -83,13 +77,11 @@ def main(filepath,output_dir,gpu_index):
         fig.tight_layout()
         plt.show()
 
-
 def parser():
     p = argparse.ArgumentParser()
     p.add_argument('-fp', '--filepath',
                    help='Path to input audio (default: %(default)s',
                    type=str, default='train01.wav')
-    
     p.add_argument('-gpu', '--gpu_index',
                    help='Assign a gpu index for processing. It will run with cpu if None.  (default: %(default)s',
                    type=int, default=None)
@@ -112,6 +104,3 @@ if __name__ == '__main__':
 #         string = "python melodyExtraction_JDC.py "
 #         string += fileName
 #         os.system(string)
-
-
-
