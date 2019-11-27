@@ -31,12 +31,11 @@ The experiments demonstrate how the auxiliary network and the joint melody loss 
   -  2 GPU : GeForce GTX 1080ti
   
 ## Using melody_extraction_JDC from the command line
-```bash
+``` bash
 $ python melodyExtraction_JDC.py -p ./test_audio_file.mp4 -gpu 0 -o ./output/
 
-optional arguments:
-  -p filepath            Path to input audio(.wav) (default: ./test_audio_file.mp4)
-  -t model_type           Model type: vocal or melody (default: vocal)
+[optional arguments]
+  -p filepath             Path to input audio(.wav) (default: ./test_audio_file.mp4)
   -gpu gpu_index          Assign a gpu index for processing.
                           It will run with cpu if None. (default: 0)
   -o output_dir           Path to output folder (default: ./output/)
