@@ -31,7 +31,7 @@ The experiments demonstrate how the auxiliary network and the joint melody loss 
   -  2 GPU : GeForce GTX 1080ti
   
 ## Using melody_extraction_JDC from the command line
-``` bash
+``` 
 $ python melodyExtraction_JDC.py -p ./test_audio_file.mp4 -gpu 0 -o ./output/
 
 [optional arguments]
@@ -44,7 +44,8 @@ $ python melodyExtraction_JDC.py -p ./test_audio_file.mp4 -gpu 0 -o ./output/
 - The resulting 'pitch_(*file_name*).txt' contains 2 columns: 
   - the first : timestamps (10 ms)
   - the second : the predicted fundamental frequency in Hz
-```bash
+
+```
 0.08 0.0000
 0.09 0.0000
 0.10 0.0000
