@@ -37,8 +37,8 @@ def main(filepath,output_dir,gpu_index):
     '''  melody predict'''
     model = melody_ResNet_joint_add(options)
     # model = melody_ResNet_joint_add2(options)
-    # model.load_weights('./weights/ResNet_joint_add_L(CE_G).hdf5')
-    model.load_weights('./weights/ResNet_joint_add_L(CE_G)_r16_t3_singleGPU.hdf5')
+    model.load_weights('./weights/ResNet_joint_add_L(CE_G).hdf5')
+#     model.load_weights('./weights/ResNet_joint_add_L(CE_G)_r16_t3_singleGPU.hdf5')
     y_predict = model.predict(X_test, batch_size=options.batch_size, verbose=1)
 
     num_total = y_predict[0].shape[0] * y_predict[0].shape[1]
